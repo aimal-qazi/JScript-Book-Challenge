@@ -1,43 +1,20 @@
-var btn1 = document.getElementById("btn1");
-var btn2 = document.getElementById("btn2");
-var btn3 = document.getElementById("btn3");
+function toShow(FormId) {
+  var tabs = document.querySelectorAll(".hid");
+  for (var i = 0; i < tabs.length; i++) {
+    tabs[i].style.display = "none";
+  }
+  var selectTab = document.getElementById(FormId);
+  selectTab.style.display = "block";
+}
+
 var form = document.getElementById("bookForm");
 
-var library = [
-  {
-    title: "The Road Ahead",
-    author: "Bill Gates",
-    libraryID: 1254,
-  },
-  {
-    title: "Walter Isaacson",
-    author: "Steve Jobs",
-    libraryID: 4264,
-  },
-  {
-    title: "Mockingjay: The Final Book of The Hunger Games",
-    author: "Suzanne Collins",
-    libraryID: 3245,
-  },
-];
-
-btn1.addEventListener("click", function () {
-  console.log(library);
-});
-
-btn2.addEventListener("click", function () {
-  const sort = library.sort((a, b) => b.libraryID - a.libraryID);
-  console.log(sort);
-});
-
-btn3.addEventListener("click", function () {
-  const sort = library.sort((a, b) => a.libraryID - b.libraryID);
-  console.log(sort);
-});
+var library = [];
 
 form.addEventListener("submit", addingBook);
 
-function addingBook() {
+function addingBook(event) {
+  event.preventDefault();
   var inp1 = document.getElementById("inp1");
   var inp2 = document.getElementById("inp2");
 
@@ -46,9 +23,9 @@ function addingBook() {
   var author = inp2.value;
 
   if (inp1.value === "") {
-    alert("Please fill all the field");
+    alert("Please fill all the fields");
   } else if (inp2.value === "") {
-    alert("Please fill all the field");
+    alert("Please fill all the fields");
   } else {
     var book = {
       title: title,
@@ -62,9 +39,76 @@ function addingBook() {
     inp2.value = "";
 
     console.log("Book added:", book);
+
+    var tableBody = document.getElementById("getTable");
+
+    var row = document.createElement("tr");
+    var idCell = document.createElement("td");
+    idCell.textContent = book.libraryID;
+    var titleCell = document.createElement("td");
+    titleCell.textContent = book.title;
+    var authorCell = document.createElement("td");
+    authorCell.textContent = book.author;
+
+    row.appendChild(idCell);
+    row.appendChild(titleCell);
+    row.appendChild(authorCell);
+
+    tableBody.appendChild(row);
+
+    alert(title + " is Successfully Added");
+  }
+}
+function random(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+const sortBtn1 = document.getElementById("sort1");
+
+sortBtn1.addEventListener("click", function () {
+  library.sort((a, b) => a.libraryID - b.libraryID);
+  displayBooks1(library);
+});
+
+function displayBooks1(books) {
+  var tableBody = document.getElementById("getTable");
+  tableBody.innerHTML = "";
+  for (var i = 0; i < books.length; i++) {
+    var row = document.createElement("tr");
+    var idCell = document.createElement("td");
+    idCell.textContent = books[i].libraryID;
+    var titleCell = document.createElement("td");
+    titleCell.textContent = books[i].title;
+    var authorCell = document.createElement("td");
+    authorCell.textContent = books[i].author;
+    row.appendChild(idCell);
+    row.appendChild(titleCell);
+    row.appendChild(authorCell);
+    tableBody.appendChild(row);
   }
 }
 
-function random(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
+const sortBtn2 = document.getElementById("sort2");
+
+sortBtn2.addEventListener("click", function () {
+  library.sort((a, b) => b.libraryID - a.libraryID);
+  displayBooks2(library);
+});
+
+function displayBooks2(books) {
+  var tableBody = document.getElementById("getTable");
+  tableBody.innerHTML = "";
+  for (var i = 0; i < books.length; i++) {
+    var row = document.createElement("tr");
+    var idCell = document.createElement("td");
+    idCell.textContent = books[i].libraryID;
+    var titleCell = document.createElement("td");
+    titleCell.textContent = books[i].title;
+    var authorCell = document.createElement("td");
+    authorCell.textContent = books[i].author;
+    row.appendChild(idCell);
+    row.appendChild(titleCell);
+    row.appendChild(authorCell);
+    tableBody.appendChild(row);
+  }
 }

@@ -1,37 +1,95 @@
-.box {
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+.header {
   width: 100%;
-  height: 30vh;
+  height: 80px;
   display: flex;
   justify-content: center;
   align-items: center;
+  background: #333;
   gap: 2rem;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.6);
 }
-.form {
-  width: 100%;
-  height: 20vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.header button {
+  padding: 10px 20px;
+  border-radius: 5px;
+  outline: 0;
+  border: 0;
+  font-size: 16px;
+  cursor: pointer;
 }
-form {
+.hid {
+  display: none;
+  max-width: 100%;
+  width: 600px;
+  margin: 80px auto;
+  max-height: 75vh;
+}
+.hid form {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 1rem;
+  width: 300px;
+  margin: 0 auto;
+  padding: 20px 10px;
+  border: 1px solid #222;
+  border-radius: 10px;
 }
-form input {
-  padding: 10px 10px;
+.hid form input {
+  padding: 10px 5px;
+  border-radius: 10px;
   outline: 0;
   border: 0;
   background-color: #333;
   color: #fff;
-  border-radius: 5px;
+  font-size: 13px;
 }
-button {
-  padding: 10px 30px;
-  border: 0;
-  outline: 0;
-  background-color: #333;
+.hid form input::placeholder {
   color: #fff;
+}
+.hid form button {
+  margin-top: 30px;
+  padding: 10px 0;
   border-radius: 5px;
+  outline: 0;
+  border: 0;
+  background-color: #555;
+  color: #fff;
   cursor: pointer;
+}
+.hid table {
+  width: 400px;
+  margin: 50px auto;
+}
+
+table {
+  border-collapse: collapse;
+}
+.hid .btns {
+  width: 400px;
+  margin: 0 auto;
+}
+.hid .btns button {
+  margin: 0 auto;
+  padding: 10px;
+  border-radius: 5px;
+  border: 0;
+  outline: 0;
+  background-color: #eee;
+  color: #333;
+  font-weight: 600;
+  border: 2px solid #ccc;
+  cursor: pointer;
+}
+table tr {
+  border: 1px solid #333;
+}
+tr th,
+tr td {
+  padding: 10px 30px;
+  border: 1px solid #333;
 }

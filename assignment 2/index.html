@@ -7,18 +7,35 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="box">
-      <button id="btn1">Show Books</button>
-      <button id="btn2">Show in accending order</button>
-      <button id="btn3">Show in deccending order</button>
+    <div class="header">
+      <button onclick="toShow('Adding')">Add book</button>
+      <button onclick="toShow('Showing')">Show Books</button>
     </div>
-    <div class="form">
+    <div id="Adding" class="hid">
       <form id="bookForm">
-        <input id="inp1" type="text" placeholder="Enter book title" required />
-        <input id="inp2" type="text" placeholder="Enter book author" required />
-        <button type="submit" onclick="addingBook()">Add Book</button>
+        <input type="text" placeholder="Enter Book Title" id="inp1" required />
+        <input type="text" placeholder="Enter Book Author" id="inp2" required />
+        <button type="submit">Add</button>
       </form>
     </div>
+    <div id="Showing" class="hid">
+      <div class="btns">
+        <button id="sort1">Show in Accending Order</button>
+        <button id="sort2">Show in Deccending Order</button>
+      </div>
+      <table>
+        <thead>
+          <th colspan="3">Book List</th>
+          <tr>
+            <td>Id</td>
+            <td>Title</td>
+            <td>Author</td>
+          </tr>
+        </thead>
+        <tbody id="getTable"></tbody>
+      </table>
+    </div>
+
     <script src="app.js"></script>
   </body>
 </html>
